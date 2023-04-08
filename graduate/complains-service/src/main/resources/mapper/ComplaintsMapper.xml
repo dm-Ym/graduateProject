@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.cuit.mapper.ComplaintsMapper">
+    <insert id="insertComplaints">
+        insert into t_complaints (uid,co_name,co_content,co_time,status)
+        values (#{uid},#{coName},#{coContent},now(),#{status})
+    </insert>
+    <select id="selectAllCom" resultType="cn.cuit.entity.Complaints">
+        select * from complaints.t_complaints;
+    </select>
+    <select id="selectById" resultType="cn.cuit.entity.Reply">
+        select * from complaints.t_reply where pid=#{id};
+    </select>
+</mapper>
+<!--
+    <resultMap id="coMap" type="cn.cuit.entity.Complaints">
+        <id property="id" column="id"/>
+        <result property="uid" column="uid"/>
+        <result property="coName" column="coName"/>
+        <result property="coContent" column="coContent"/>
+        <result property="coTime" column="coTime"/>
+        <result property="status" column="status"/>
+        <association property="replies" column="pid" javaType="cn.cuit.entity.Reply">
+            <id property="id" column="id"/>
+            <result property="pid" column="pid"/>
+            <result property="uid" column="uid"/>
+            <result property="reName" column="reName"/>
+            <result property="reContent" column="reContent"/>
+            <result property="reTime" column="reTime"/>
+            <result property="status" column="status"/>
+        </association>
+    </resultMap>
+
+    <select id="selectAllInfo" resultMap="coMap">
+        select co.*,re.* from complaints.t_complaints as co inner join t_reply as re
+        where co.id=re.pid;
+    </select>
+-->
+
+        <!--    <resultMap id="coMap" type="cn.cuit.entity.Complaints">
+                <id property="id" column="id"/>
+                <result property="uid" column="uid"/>
+                <result property="coName" column="co_name"/>
+                <result property="coContent" column="co_content"/>
+                <result property="coTime" column="co_time"/>
+                <result property="status" column="status"/>
+                <association property="replies" column="pid" javaType="cn.cuit.entity.Reply">
+                    <id property="id" column="id"/>
+                    <result property="pid" column="pid"/>
+                    <result property="uid" column="uid"/>
+                    <result property="reName" column="re_name"/>
+                    <result property="reContent" column="re_content"/>
+                    <result property="reTime" column="re_time"/>
+                    <result property="toUid" column="to_uid"/>
+                    <result property="status" column="status"/>
+                </association>
+            </resultMap>-->
+        <!--    <select id="selectAllInfo" resultMap="coMap">-->
+        <!--        select co.id,co.uid,co.co_name,co.co_content,co.co_time,co.status,-->
+        <!--        re.id,re.pid,re.uid,re.re_name,re.re_content,re.re_time,re.to_uid,re.status-->
+        <!--        from complaints.t_complaints as co, complaints.t_reply as re-->
+        <!--        where co.id=re.pid;-->
+        <!--    </select>-->

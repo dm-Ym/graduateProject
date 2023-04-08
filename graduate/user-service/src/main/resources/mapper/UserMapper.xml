@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.cuit.mapper.UserMapper">
+
+    <update id="updateInfo" parameterType="cn.cuit.entity.User">
+        update graduation.t_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="fullName!=null">full_name=#{fullName},</if>
+            <if test="pwd!=null">pwd=#{pwd},</if>
+            <if test="age!=null">age=#{age},</if>
+            <if test="gender!=null">gender=#{gender},</if>
+            <if test="phone!=null">phone=#{phone},</if>
+            <if test="neighborhood!=null">neighborhood=#{neighborhood},</if>
+            <if test="community!=null">community=#{community},</if>
+            <if test="residential!=null">residential=#{residential},</if>
+            <if test="doorplate!=null">doorplate=#{doorplate},</if>
+<!--            <if test="roles==null">roles='user',</if>-->
+<!--            <if test="permissions==null">permissions='select'</if>-->
+        </trim>
+<!--在只提交了id的情况下,这个逗号按理来说应该有问题,但是没报错,能正确执行,不用管它-->
+        ,roles='user',permissions='select'
+        where user_id=#{userId}
+    </update>
+
+<!--    <insert id="register">-->
+<!--        insert into graduation.t_user-->
+<!--        (full_name,pwd,age,gender,phone,neighborhood,community,residential,doorplate,roles,permissions)-->
+<!--        values-->
+<!--        (#{fullName},#{pwd},#{age},#{gender},#{phone},#{neighborhood},#{community},#{residential},#{doorplate},user,select);-->
+<!--    </insert>-->
+
+</mapper>
+<!--
+    <update id="updateInfo">
+        update graduation.t_user set full_name=#{fullName},pwd=#{pwd},age=#{age},gender=#{gender},neighborhood=#{neighborhood},community=#{community},residential=#{residential},doorplate=#{doorplate},roles=#{roles},permissions=#{permissions}
+        where user_id = #{userId}
+    </update>
+-->
+<!--    <update id="updateInfo" parameterType="cn.cuit.entity.Abno">
+        update graduation.t_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="fullName!=null">full_name=#{fullName,jdbcType=CHAR},</if>
+            <if test="pwd!=null">pwd=#{pwd,jdbcType=VARCHAR},</if>
+            <if test="age!=null">age=#{age,jdbcType=INTEGER},</if>
+            <if test="gender!=null">gender=#{gender,jdbcType=CHAR},</if>
+            <if test="neighborhood!=null">neighborhood=#{neighborhood,jdbcType=VARCHAR},</if>
+            <if test="community!=null">community=#{community,jdbcType=VARCHAR},</if>
+            <if test="residential!=null">residential=#{residential,jdbcType=VARCHAR},</if>
+            <if test="doorplate!=null">doorplate=#{doorplate,jdbcType=VARCHAR},</if>
+            <if test="roles!=null">roles=#{roles,jdbcType=VARCHAR},</if>
+            <if test="permissions!=null">permissions=#{permissions,jdbcType=VARCHAR}</if>
+        </trim>
+        where user_id=#{userId}
+    </update>-->
+
+<!--
+    <select id="queryAllUser" resultType="cn.cuit.entity.Abno">
+        select * from graduation.t_user;
+    </select>-->

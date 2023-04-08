@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.cuit.mapper.CommentsMapper">
+    <insert id="insertNew">  <!-- pid指向id -->
+        insert into t_comments (uid,pid,com_name,content,create_time)
+        values (#{uid},#{pid},#{comName},#{content},now());
+    </insert>
+    <update id="updateInfo" parameterType="cn.cuit.entity.Comments">
+        update comments.t_comments
+        <trim prefix="set" suffixOverrides=",">
+            <if test="uid!=null">uid=#{uid},</if>
+            <if test="pid!=null">pid=#{pid},</if>
+            <if test="comName!=null">com_name=#{comName},</if>
+            <if test="content!=null">content=#{content},</if>
+        </trim>
+        ,create_time=now()
+        where id=#{id}
+    </update>
+    <select id="selectList" resultType="cn.cuit.entity.Comments">
+        select * from t_comments where pid=0;
+    </select>
+</mapper>
