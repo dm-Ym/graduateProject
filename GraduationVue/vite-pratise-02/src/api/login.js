@@ -1,13 +1,18 @@
-import service from "../axios";
+import service from "@/axios/axios.js";
 import { ElNotification } from 'element-plus'
 
-export function login(uid, username) {
+export function register(data) {
+  return service.post('/api/register', data)
+}
+
+export function login(phone, pwd, roles) {
 
   return service.request({
     method: "POST",
     data: {
-      uid: uid,
-      username: username
+      phone: phone,
+      pwd: pwd,
+      roles: roles
     },
     url: "/api/login"
   })

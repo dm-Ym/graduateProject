@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
+import { resolve } from "path";
+const pathResolve = (dir) => resolve(__dirname, dir);
 
 
 // https://vitejs.dev/config/
@@ -12,10 +14,15 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8087',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/g, ''),
       }
     }
+  },
+  resolve: {
+    alias: {
+      "@": pathResolve("./src"), // 新增
+    },
   }
 })

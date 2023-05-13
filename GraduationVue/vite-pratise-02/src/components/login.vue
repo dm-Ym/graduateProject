@@ -16,18 +16,23 @@
 
       <el-form ref="formRef" :model="form" class="w-250px" :rules="rules">
 
-        <el-form-item prop="uid">
-          <el-input v-model="form.uid" placeholder="请输入用户名" />
+        <el-form-item prop="phone">
+          <el-input v-model="form.phone" placeholder="请输入用户名" />
         </el-form-item>
-        <el-form-item prop="username">
-          <el-input type="password" v-model="form.username" placeholder="请输入密码" />
+        <el-form-item prop="pwd">
+          <el-input type="password" v-model="form.pwd" placeholder="请输入密码" />
         </el-form-item>
-
+        <el-form-item>
+          <el-radio-group v-model="form.roles">
+            <el-radio label="admin" value="admin">管理员</el-radio>
+            <el-radio label="user" value="user">普通用户</el-radio>
+          </el-radio-group>
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="onSubmit" class="w-250px rounded-4xl">登录</el-button>
         </el-form-item>
         <el-form-item>
-          <el-button @click="onSubmit" class="w-250px rounded-4xl">注册</el-button>
+          <el-button @click="$router.push('/register')" class="w-250px rounded-4xl">注册</el-button>
         </el-form-item>
 
       </el-form>
@@ -38,29 +43,20 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
-import { login } from "../api/login";
+import { login } from "@/api/login";
 import { useRouter } from "vue-router";
 import { ElNotification } from 'element-plus'
+import { useStore } from 'vuex';
 
+const store = useStore()
 const router = useRouter()
 
-const form = reactive({
-  uid: '',
-  username: ''
-})
+const form = reactive({ phone: '', pwd: '', roles: '' })
 
 const rules = {
-  uid: [{
-    required: true,
-    message: '用户名不能为空',
-    trigger: 'blur'
-  }],
-
-  username: [{
-    required: true,
-    message: '密码不能为空',
-    trigger: 'blur'
-  }]
+  uid: [{ required: true, message: '用户名不能为空', trigger: 'blur' }],
+  username: [{ required: true, message: '密码不能为空', trigger: 'blur' }],
+  roles: [{ required: true, message: '不能为空', trigger: 'blur' }]
 }
 
 const formRef = ref(null)
@@ -71,21 +67,35 @@ const onSubmit = () => {
       return false;
     }
 
-    login(form.uid, form.username)
+    login(form.phone, form.pwd, form.roles)
       .then(res => {
-        ElNotification({
-          message: res.data,
-          type: 'success',
-          duration: 3000,
-        })
-        console.log(res);
+        if (res.data.code === 200) {
+          store.commit("SET_UserInfo", res.data.data.User)
+          store.commit("SET_Roles", res.data.data.User.roles)
+          localStorage.setItem("roles", res.data.data.User.roles)
+          localStorage.setItem("token", res.data.data.token)
+          ElNotification({
+            message: res.data.message,
+            type: 'success',
+            duration: 3000,
+          })
+          router.push('/')
+        } else {
+          ElNotification({
+            // title: '错误提示',
+            message: res.data.message,
+            type: 'error',
+            duration: 3000,
+          })
+        }
       }).catch(err => {
         ElNotification({
           title: '错误提示',
-          message: err.response.data,
+          message: err.data.message,
           type: 'error',
           duration: 3000,
         })
+        console.log(err);
       })
 
   })
@@ -95,7 +105,7 @@ const onSubmit = () => {
 
 <style>
 .a-bg {
-  background-image: url('../imgs/fqd.jpg');
+  background-image: url('../images/4d2.jpeg');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
