@@ -1,6 +1,7 @@
 package cn.cuit.controller;
 
 import cn.cuit.entity.Comments;
+import cn.cuit.mapper.CommentsMapper;
 import cn.cuit.resultAPI.Result;
 import cn.cuit.service.CommentsService;
 import org.apache.shiro.authz.annotation.Logical;
@@ -12,10 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/comadmin")
-@RequiresRoles(value = {"admin","super"},logical = Logical.OR)
+//@RequiresRoles(value = {"admin","super"},logical = Logical.OR)
 public class AdminComController {
 	@Autowired
 	private CommentsService commentsService;
+
+	@Autowired
+	private CommentsMapper commentsMapper;
 
 	@PostMapping
 	public Result<Comments> createNewCom(@RequestBody Comments comments){
@@ -27,14 +31,19 @@ public class AdminComController {
 		return commentsService.deleteComment(id);
 	}
 
-//	@PutMapping
-//	public Result<Comments> updateCom(@RequestBody Comments comments){
-//		return commentsService.updateComment(comments);
-//	}
+	@PutMapping
+	public Result<Comments> updateCom(@RequestBody Comments comments){
+		return commentsService.updateComment(comments);
+	}
 
 	@GetMapping("/{id}")
 	public Result<Comments> findById(@PathVariable int id){
 		return commentsService.queryById(id);
+	}
+
+	@GetMapping("/name/{comName}")
+	public Result<List<Comments>> findById(@PathVariable String comName) {
+		return Result.success(commentsMapper.queryByName(comName));
 	}
 
 	/**
@@ -43,5 +52,9 @@ public class AdminComController {
 	@GetMapping
 	public Result<List<Comments>> findAll(){
 		return commentsService.queryAll();
+	}
+	@GetMapping("/down")
+	public Result<List<Comments>> findDown(){
+		return Result.success(commentsMapper.selectDown());
 	}
 }

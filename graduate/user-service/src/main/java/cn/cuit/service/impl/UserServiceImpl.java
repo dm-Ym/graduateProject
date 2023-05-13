@@ -66,10 +66,10 @@ public class UserServiceImpl implements UserService {
 		return Result.success(userMapper.selectById(id));
 	}
 
-	@Override
-	public Result<User> queryUserByName(String fullName) {
-		return Result.success(userMapper.selectByName(fullName));
-	}
+//	@Override
+//	public Result<User> queryUserByName(String fullName) {
+//		return Result.success(userMapper.selectByName(fullName));
+//	}
 
 	@Override
 	public Result<List<User>> queryAllUser() {

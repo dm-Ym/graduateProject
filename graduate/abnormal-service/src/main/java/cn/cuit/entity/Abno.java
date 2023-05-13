@@ -10,18 +10,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("t_user")
+@TableName("t_abno")
 public class Abno {
 	private int id;
-//	private String ;
-//	private String ;
-//	private int    ;
-//	private String ;
-//	private String ;
-//	private String ;
-//	private String ;
-//	private String ;
-//	private String ;
-//	private String ;
-//	private String ;
+	private String abnoName;
+	private double temperature;
+	private String otherSymptom;
+	private String risk;
+	private String location;
+	private String addTime;
+	private String healTime;
+	private int status;
 }

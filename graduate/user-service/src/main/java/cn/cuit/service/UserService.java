@@ -15,6 +15,6 @@ public interface UserService {
 	Result<User> updateUser(User user);
 	Result<User> updateUserPwd(String pwd,int id);
 	Result<User> queryUserById(int id);
-	Result<User> queryUserByName(String fullName);
+//	Result<User> queryUserByName(String fullName);
 	Result<List<User>> queryAllUser();
 }

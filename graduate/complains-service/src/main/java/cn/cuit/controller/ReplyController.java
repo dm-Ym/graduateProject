@@ -14,10 +14,10 @@ public class ReplyController {
 	@Autowired
 	private ReplyService replyService;
 
-//	@GetMapping("/")
-//	public Result<List<Complaints>> findAll(){
-//		return complaintsService.queryAll();
-//	}
+	@GetMapping
+	public Result<List<Reply>> findAll(){
+		return replyService.queryAll();
+	}
 
 	@PostMapping
 	public Result<Reply> createNewCom(@RequestBody Reply reply){

@@ -39,7 +39,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ank/ankLocal/graduate/announcement/src/main/java/cn/cuit&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ank/ankLocal/graduate/abnormal-service/src/main/java/cn/cuit&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -48,21 +48,21 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/abnormal-service/src/main/java/cn/cuit" />
       <recent name="$PROJECT_DIR$/announcement/src/main/java/cn/cuit" />
       <recent name="$PROJECT_DIR$/comments-service/src/main/java/cn/cuit" />
       <recent name="exception" />
       <recent name="$PROJECT_DIR$/message-service/src/main/java/cn/cuit" />
-      <recent name="$PROJECT_DIR$/complains-service/src/main/java/cn/cuit" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.cuit.mapper" />
+      <recent name="cn.cuit.entity" />
       <recent name="cn.cuit.jwt" />
       <recent name="cn.cuit.controller" />
       <recent name="cn.cuit.service.impl" />
-      <recent name="cn.cuit.service" />
-      <recent name="cn.cuit.mapper" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -73,23 +73,10 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.userApplication">
-    <configuration name="announcementApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.cuit.announcementApplication" />
-      <module name="announcement" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.cuit.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="commentsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.cuit.commentsApplication" />
-      <module name="comments-service" />
+  <component name="RunManager" selected="Application.abnormalApplication">
+    <configuration name="abnormalApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.cuit.abnormalApplication" />
+      <module name="abnormal-service" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.cuit.*" />
@@ -126,6 +113,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="messageApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.cuit.messageApplication" />
+      <module name="message-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.cuit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="userApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cn.cuit.userApplication" />
       <module name="user-service" />
@@ -141,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.gatewayApplication" />
-        <item itemvalue="Application.userApplication" />
-        <item itemvalue="Application.announcementApplication" />
-        <item itemvalue="Application.commentsApplication" />
+        <item itemvalue="Application.abnormalApplication" />
         <item itemvalue="Application.complaintsApplication" />
+        <item itemvalue="Application.userApplication" />
+        <item itemvalue="Application.messageApplication" />
+        <item itemvalue="Application.gatewayApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -159,5 +159,16 @@
       <updated>1680177766222</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/complains-service/src/main/java/cn/cuit/controller/AdviceController.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

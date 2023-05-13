@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Objects;
 
-//@RequiresRoles(value = {"user","super"},logical = Logical.OR)
+@RequiresRoles(value = {"user","super"},logical = Logical.OR)
 @RestController
 public class userController {
 	@Autowired

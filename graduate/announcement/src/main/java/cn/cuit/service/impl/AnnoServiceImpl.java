@@ -20,7 +20,7 @@ public class AnnoServiceImpl implements AnnoService {
 
 	@Override
 	public Result<Anno> addNewAnno(Anno anno) {
-		return Result.success(annoMapper.insert(anno)+"");
+		return Result.success(annoMapper.insertNewAnno(anno)+"");
 	}
 
 	/**

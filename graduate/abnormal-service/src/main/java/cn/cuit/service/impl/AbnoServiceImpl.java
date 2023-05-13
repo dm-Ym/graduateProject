@@ -39,7 +39,7 @@ public class AbnoServiceImpl implements AbnoService {
 
 	@Override
 	public Result<Abno> updateAbno(Abno abno) {
-		abnoMapper.updateInfo(abno);
+//		abnoMapper.updateInfo(abno);
 		return Result.success(abnoMapper.selectById(abno.getId()));
 	}
 

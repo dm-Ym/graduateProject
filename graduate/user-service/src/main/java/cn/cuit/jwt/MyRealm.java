@@ -52,6 +52,7 @@ public class MyRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+        System.out.println("验证用户名密码<======");
         String jwt= (String) token.getCredentials();
         String phone= null;
         //decode时候出错，可能是token的长度和规定好的不一样了
@@ -60,6 +61,7 @@ public class MyRealm extends AuthorizingRealm {
         }catch (Exception e){
             throw new AuthenticationException("token非法，不是规范的token，可能被篡改了，或者过期了");
         }
+        System.out.println(phone);
         User user = userMapper.selectByPhone(phone);
         if (user==null){
             throw new AuthenticationException("该用户不存在");

@@ -1,6 +1,7 @@
 package cn.cuit.controller;
 
 import cn.cuit.entity.User;
+import cn.cuit.mapper.UserMapper;
 import cn.cuit.resultAPI.Result;
 import cn.cuit.service.UserService;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -9,6 +10,7 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiresRoles(value = {"admin","super"},logical = Logical.OR)
@@ -16,6 +18,9 @@ import java.util.List;
 public class adminController {
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private UserMapper userMapper;
 
 	/**
 	 * 查询全部用户: 分社区,小区,楼宇查看用户
@@ -29,9 +34,13 @@ public class adminController {
 	/**
 	 * 查看用户详情
 	 */
-	@GetMapping("/{id}")
-	public Result<User> findById(@PathVariable int id){
-		return userService.queryUserById(id);
+	@GetMapping("/{phone}")
+	public Result<User> findByPhone(@PathVariable String phone){
+		return Result.success(userMapper.selectByPhone(phone));
+	}
+	@GetMapping("/search/{str}")
+	public Result<List<User>> findByName(@PathVariable String str){
+		return Result.success(userMapper.selectByName(str));
 	}
 
 	/**
@@ -56,8 +65,8 @@ public class adminController {
 	 * 删除用户 : 后面加一个删除人
 	 */
 	@DeleteMapping("/{id}")
-	public Result<User> deleteUser(@RequestBody User user){
-		return userService.deleteUser(user.getUserId());
+	public Result<User> deleteUser(@PathVariable int id){
+		return userService.deleteUser(id);
 	}
 
 	/**

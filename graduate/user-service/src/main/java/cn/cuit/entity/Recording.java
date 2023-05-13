@@ -8,14 +8,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("t_comments")
-public class Comments {
+@TableName("t_recording")
+public class Recording {
 	private int id;
-	private int uid;
-	private int pid;
-	private String comName;
-	private String content;
+	private String uid;
+	private String userName;
+	private String manufacturers;
+	private String types;
+	private String finish;
 	private String createTime;
-	private int status;
-	private String roles;
 }

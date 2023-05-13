@@ -16,6 +16,6 @@ public class Reply {
 	private String reName;
 	private String reContent;
 	private String reTime;
+	private boolean showText;
 	private int toUid;
-	private int status;
 }

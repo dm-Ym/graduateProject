@@ -3,7 +3,7 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.cuit.mapper.AbnoMapper">
-	<update id="updateInfo">
-		update
-	</update>
+<!--	<update id="updateInfo">-->
+<!--		update-->
+<!--	</update>-->
 </mapper>

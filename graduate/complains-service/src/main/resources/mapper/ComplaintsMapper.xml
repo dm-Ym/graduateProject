@@ -3,14 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.cuit.mapper.ComplaintsMapper">
     <insert id="insertComplaints">
-        insert into t_complaints (uid,co_name,co_content,co_time,status)
-        values (#{uid},#{coName},#{coContent},now(),#{status})
+        insert into t_complaints (uid,co_name,co_content,co_time)
+        values (#{uid},#{coName},#{coContent},now())
     </insert>
     <select id="selectAllCom" resultType="cn.cuit.entity.Complaints">
-        select * from complaints.t_complaints;
+        select * from complaints.t_complaints order by co_time desc;
     </select>
     <select id="selectById" resultType="cn.cuit.entity.Reply">
-        select * from complaints.t_reply where pid=#{id};
+        select * from complaints.t_reply where pid=#{id} order by re_time desc;
     </select>
 </mapper>
 <!--

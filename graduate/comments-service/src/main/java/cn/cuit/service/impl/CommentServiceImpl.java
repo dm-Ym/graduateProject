@@ -41,7 +41,7 @@ public class CommentServiceImpl implements CommentsService {
 
 	@Override
 	public Result<List<Comments>> queryAll() {
-		return Result.success(commentsMapper.selectList(null));
+		return Result.success(commentsMapper.selectListComm());
 //		使用nacos注册中新和xxxx框架向user-service服务发请求
 //		return null;
 	}

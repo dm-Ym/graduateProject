@@ -14,6 +14,7 @@
             <if test="pid!=null">pid=#{pid},</if>
             <if test="comName!=null">com_name=#{comName},</if>
             <if test="content!=null">content=#{content},</if>
+            <if test="status!=null">status=#{status},</if>
         </trim>
         ,create_time=now()
         where id=#{id}

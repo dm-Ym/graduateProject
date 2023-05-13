@@ -20,6 +20,11 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
+	public Result<List<Reply>> queryAll() {
+		return Result.success(replyMapper.selectList(null));
+	}
+
+	@Override
 	public Result<Reply> addNewReply(Reply reply) {
 		return Result.success(replyMapper.insertNew(reply)+"");
 	}

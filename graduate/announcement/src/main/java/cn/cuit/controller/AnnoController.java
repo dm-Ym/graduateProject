@@ -16,13 +16,13 @@ public class AnnoController {
 	@Autowired
 	private AnnoService annoService;
 
-	@RequiresRoles("admin")
+//	@RequiresRoles("admin")
 	@PostMapping
 	public Result<Anno> createNewAnno(@RequestBody Anno anno){
 		return annoService.addNewAnno(anno);
 	}
 
-	@RequiresRoles("admin")
+//	@RequiresRoles("admin")
 	@DeleteMapping
 	public Result<Anno> deleteAnno(@RequestBody Anno anno){
 		return annoService.deleteAnno(anno);

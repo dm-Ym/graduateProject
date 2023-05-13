@@ -14,8 +14,8 @@ public interface UserMapper extends BaseMapper<User> {
 	@Update("update graduation.t_user set pwd=#{pwd} where user_id=#{id} and roles='user' ")
 	int updateUserPwd(@Param("pwd") String pwd,@Param("id")int id);
 
-	@Select("select * from t_user where full_name=#{fullName}")
-	User selectByName(String fullName);
+	@Select("select * from t_user where full_name=#{str} or phone=#{str}")
+	List<User> selectByName(String str);
 
 	@Insert("insert into graduation.t_user (full_name,pwd,age,gender,phone,neighborhood,community,residential,doorplate,roles,permissions)" +
 			"values (#{fullName},#{pwd},#{age},#{gender},#{phone},#{neighborhood},#{community},#{residential},#{doorplate},'user','select')")
@@ -26,6 +26,7 @@ public interface UserMapper extends BaseMapper<User> {
 
 	@Select("select * from t_user where phone=#{phone} and roles=#{roles}")
 	User login(@Param("phone") String phone,@Param("roles") String roles);
+
 
 	@Select("select * from t_user where roles='user'")
 	List<User> selectAllUser();

@@ -17,6 +17,8 @@ public class Complaints {
 	private String coName;
 	private String coContent;
 	private String coTime;
+	private boolean showReplies;
+	private boolean showText;
 	private int status;
 	private List<Reply> replies;
 }

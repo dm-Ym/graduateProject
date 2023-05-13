@@ -16,15 +16,15 @@ spring:
         - id: userservice
           uri: lb://user-service
           predicates:
-            - Path=/user/**, /login, /register, /admin/**
+            - Path=/user/**, /login, /register, /admin/**,/booking/**,/record/**
         - id: msgservice
           uri: lb://message-service
           predicates:
-            - Path=/msguser/**, /msgadmin/**
+            - Path=/msguser/**, /msgadmin/**,/trip/**
         - id: complaintsservice
           uri: lb://complaints-service
           predicates:
-            - Path=/complaints/**, /replies/**
+            - Path=/complaints/**, /replies/**,/advice/**
         - id: commentsservice
           uri: lb://comments-service
           predicates:
@@ -33,12 +33,19 @@ spring:
           uri: lb://announcement-service
           predicates:
             - Path=/anno/**
+        - id: abnoservice
+          uri: lb://abnormal-service
+          predicates:
+            - Path=/abno/**,/heal/**
       globalcors: # 全局跨域处理
         add-to-simple-url-handler-mapping: true # 解决options(对服务器的询问:询问是否允许跨域)请求被拦截问题
         corsConfigurations:
           '[/**]':
             allowedOrigins: # 允许哪些网站的跨域请求
-              - "http://localhost:0627"
+              - "http://localhost:5173"
+              - "http://localhost:5174"
+              - "http://localhost:5175"
+              - "http://localhost:5176"
               - "http://www.baidu.com"
             allowedMethods: # 允许的跨域ajax的请求方式
               - "GET"
