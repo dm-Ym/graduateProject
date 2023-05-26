@@ -20,7 +20,7 @@ const routes = [
         children: [
           {
             path: 'user', name: '所有用户', hidden: false,
-            component: () => import('@/pages/subPages/User.vue'),
+            component: () => import('../pages/subPages/User.vue'),
           },
           // {
           //   path: 'manage', name: '用户管理', hidden: false,
@@ -48,70 +48,59 @@ const routes = [
         ]
       },
       {
-        path: '/vaccination', name: '疫苗接种', hidden: true,
-        component: () => import('@/pages/Folded.vue'),
+        path: '/vaccination', name: '疫苗模块', hidden: true, component: Folded,
         meta: { icon: 'el-icon-edit', roles: ['super admin'], visiable: false },
         children: [
-          // {
-          //   path: 'userecord', name: '个人接种记录', hidden: false,
-          //   component: () => import('@/pages/user/VaccRecordUser.vue'),
-          // },
           {
             path: 'record', name: '接种记录', hidden: false,
-            component: () => import('@/pages/subPages/VaccRecord.vue'),
+            component: () => import('../pages/subPages/VaccRecord.vue'),
           },
           {
-            path: 'reservation', name: '接种预约', hidden: false,
+            path: 'reservation', name: '医院管理', hidden: false,
             component: () => import('@/pages/subPages/VaccRever.vue')
           }
         ]
       },
       {
-        path: '/vaccination', name: '疫苗接种', hidden: true,
-        component: () => import('@/pages/Folded.vue'),
+        path: '/vacinatin', name: '疫苗接种', hidden: true, component: Folded,
         meta: { icon: 'el-icon-edit', roles: ['user'], visiable: false },
         children: [
           {
-            path: 'userecord', name: '个人接种记录', hidden: false,
+            path: 'userecor', name: '个人接种记录', hidden: false,
             component: () => import('@/pages/user/VaccReverUser.vue'),
           },
           {
-            path: 'reservation', name: '接种预约', hidden: false,
-            component: () => import('@/pages/subPages/VaccRever.vue')
+            path: 'reservatio', name: '接种预约', hidden: false,
+            component: () => import('@/pages/user/VacRever.vue')
           }
         ]
       },
+      // {
+      //   path: '/guest', name: '访客模块', hidden: true,
+      //   component: () => import('@/pages/Folded.vue'),
+      //   meta: { icon: 'el-icon-edit', roles: ['super admin'], visiable: false },
+      //   children: [
+      //     {
+      //       path: 'record', name: '访客名单', hidden: false,
+      //       component: () => import('@/pages/subPages/GuestUser.vue')
+      //     },
+      //     // {
+      //     //   path: 'reservation', name: '接种预约', hidden: false,
+      //     //   component: () => import('@/pages/subPages/VaccRever.vue')
+      //     // }
+      //   ]
+      // },
       {
-        path: '/guest', name: '访客模块', hidden: true,
-        component: () => import('@/pages/Folded.vue'),
+        path: '/health', name: "用户健康", component: Folded, hidden: true,
         meta: { icon: 'el-icon-edit', roles: ['super admin'], visiable: false },
         children: [
           {
-            path: 'record', name: '访客名单', hidden: false,
-            component: () => import('@/pages/subPages/GuestUser.vue')
-          },
-          // {
-          //   path: 'reservation', name: '接种预约', hidden: false,
-          //   component: () => import('@/pages/subPages/VaccRever.vue')
-          // }
-        ]
-      },
-      {
-        path: '/health', name: "健康管理", component: Folded, hidden: true,
-        meta: { icon: 'el-icon-edit', roles: ['super admin'], visiable: false },
-        children: [
-          // {
-          //   path: 'usertrip', name: '以往行程', hidden: false,
-          //   component: () => import('@/pages/user/HistoryTrip.vue'),
-          //   meta: { roles: ['user'], visiable: false }
-          // },
-          {
-            path: 'trip', name: '历史行程', hidden: false,
+            path: 'trip', name: '用户行程', hidden: false,
             component: () => import('@/pages/subPages/HealthTrip.vue')
           },
           {
             path: 'up', name: '信息上报', hidden: false,
-            component: () => import('@/pages/subPages/HealthUp.vue')
+            component: () => import('@/pages/subPages/UpHealth.vue')
           },
         ]
       },
@@ -125,7 +114,7 @@ const routes = [
             meta: { roles: ['user'], visiable: false }
           },
           {
-            path: 'up', name: '信息上报', hidden: false,
+            path: 'upu', name: '上报信息', hidden: false,
             component: () => import('@/pages/subPages/HealthUp.vue')
           },
         ]
@@ -134,10 +123,6 @@ const routes = [
         path: '/anno', name: '公告', component: Anno, hidden: false,
         meta: { icon: 'el-icon-home', roles: ['super admin user guest'], visiable: false },
       },
-      // {
-      //   path: '/ganno', name: '公告/通知', component: () => import('@/pages/guest/GuestAnno.vue'), hidden: false,
-      //   meta: { icon: 'el-icon-home', roles: ['guest'], visiable: true },
-      // },
       {
         path: '/complaints', name: '投诉/意见', component: Folded, hidden: true,
         meta: { icon: 'el-icon-edit', roles: ['super admin'], visiable: false },
@@ -146,10 +131,6 @@ const routes = [
             path: 'others', name: '投诉', hidden: false,
             component: () => import('@/pages/subPages/CompOther.vue')
           },
-          // {
-          //   path: 'mine', name: '我的', hidden: false,
-          //   component: () => import('@/pages/subPages/CompMine.vue')
-          // },
           {
             path: 'advice', name: '意见', hidden: false,
             component: () => import('@/pages/subPages/CompAdvice.vue')
@@ -207,9 +188,13 @@ const routes = [
           },
         ]
       },
+      // {
+      //   path: '/asd', name: "测试", component: () => import('@/pages/asd.vue'),
+      //   meta: { icon: 'el-icon-home', roles: ['super admin user guest'], visiable: true },
+      // },
       {
-        path: '/asd', name: "测试", component: () => import('@/pages/asd.vue'),
-        meta: { icon: 'el-icon-home', roles: ['super admin user guest'], visiable: true },
+        path: '/per', name: '个人中心', component: () => import('@/pages/user/personal.vue'), hidden: true,
+        meta: { roles: ['11'], visiable: false }
       },
     ]
   },

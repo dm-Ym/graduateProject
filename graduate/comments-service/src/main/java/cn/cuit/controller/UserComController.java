@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/comuser")
-@RequiresRoles("user")
+//@RequiresRoles("user")
 public class UserComController {
 	@Autowired
 	private CommentsService commentsService;
@@ -35,11 +35,11 @@ public class UserComController {
 	}
 
 	@GetMapping("/{id}")
-	public Result<Comments> findById(@PathVariable int id){
+	public Result<List<Comments>> findById(@PathVariable int id){
 		return commentsService.queryById(id);
 	}
-	@GetMapping("/all/{id}")
-	public Result<List<Comments>> qById(@PathVariable int id){
-		return Result.success(commentsMapper.queryById(id));
-	}
+//	@GetMapping("/all/{id}")
+//	public Result<List<Comments>> qById(@PathVariable int id){
+//		return Result.success(commentsMapper.queryById(id));
+//	}
 }

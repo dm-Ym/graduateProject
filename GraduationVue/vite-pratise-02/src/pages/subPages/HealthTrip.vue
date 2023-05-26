@@ -36,7 +36,7 @@ export default {
     getData() {
       getListTrip().then((res) => {
         this.total = res.data.data.length
-        // console.log(res);
+        console.log(res.data.data);
         this.tableData = res.data.data
       })
     },

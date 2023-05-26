@@ -18,10 +18,10 @@
     <el-table-column prop="community" label="小区" width="180" />
     <el-table-column prop="residential" label="楼宇" width="180" />
     <el-table-column prop="doorplate" label="门牌号" width="150" />
-    <el-table-column prop="health" label="健康与否" width="100" />
+    <!-- <el-table-column prop="health" label="健康与否" width="100" /> -->
     <el-table-column label="操作" width="180">
       <template v-slot="scope">
-        <el-button type="primary">详情</el-button>
+        <el-button type="primary" @click="onEdit(scope.row)">详情</el-button>
         <el-button type="danger" @click="onDeleteUser(scope.row)">删除</el-button>
       </template>
     </el-table-column>
@@ -88,6 +88,8 @@
 import { getAll, getByName } from '@/api/get';
 import { createUser } from '@/api/post.js';
 import { deleteUser } from '@/api/delete.js';
+import store from '../../store';
+import router from '../../router';
 
 export default {
   data() {
@@ -97,7 +99,7 @@ export default {
       currentPage: 1,
       pageSize: 13,
       total: 100,
-      dialogVisible: false
+      dialogVisible: false,
     }
   },
   created() {
@@ -107,6 +109,7 @@ export default {
     getData() {
       getAll().then((res) => {
         this.total = res.data.data.length
+        store.commit('User_Num', this.total)
         this.tableData = res.data.data
       })
     },
@@ -137,6 +140,11 @@ export default {
         this.total = 1
         this.tableData = res.data.data
       })
+    },
+    // 详情
+    onEdit(row) {
+      store.commit('Per_Data', row)
+      router.push('/per')
     }
   }
 }

@@ -17,9 +17,9 @@
     </el-table-column>
     <!-- <el-table-column prop="content" label="Address" :formatter="formatter" /> -->
   </el-table>
-  <el-pagination :current-page="currentPage" :page-size="pageSize" :page-sizes="[13, 20, 40, 70]" :background="background"
+  <el-pagination :current-page="currentPage" :page-size="pageSize" :page-sizes="[11, 20, 40, 70]" :background="background"
     layout="total, sizes, prev, pager, next, jumper" :total="total" :hide-on-single-page="true"
-    @size-change="handleSizeChange" @current-change="handleCurrentChange" hide-on-single-page="false" />
+    @size-change="handleSizeChange" @current-change="handleCurrentChange" />
 
   <el-dialog v-model="dialogVisible" title="意见" width="55%" :before-close="handleClose">
     <el-form :model="form" label-width="80px">
@@ -59,7 +59,7 @@ export default {
       },
       isDelete: '',
       currentPage: 1,
-      pageSize: 13,
+      pageSize: 11,
       total: 100,
       background: true,
     }

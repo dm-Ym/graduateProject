@@ -1,12 +1,12 @@
 <template>
   <el-row class="min-h-screen">
     <el-col :lg="16" :sm="12" class="bg-green-400 flex items-center justify-center a-bg">
-      <div>
-        <div class="text-5xl text-light-300 text-stroke-1 mb-4">欢迎回来</div>
-        <div>treo foo bar bae yeank chove clues throo</div>
-      </div>
     </el-col>
     <el-col :lg="8" :sm="12" class="bg-light-300 flex items-center justify-center flex-col">
+      <!-- <div>
+        <div class="text-5xl text-black text-stroke-1 mb-4">欢迎回来</div>
+        <div>treo foo bar bae yeank chove clues throo</div>
+      </div> -->
       <h1 class="font-bold text-gray-600 text-4xl mb-4">登录页面</h1>
       <div class="mb-2 flex items-center justify-center space-x-2">
         <span class="h-[1px] bg-green-500 w-16"></span>
@@ -71,6 +71,7 @@ const onSubmit = () => {
       .then(res => {
         if (res.data.code === 200) {
           store.commit("SET_UserInfo", res.data.data.User)
+          store.commit("Per_Data", res.data.data.User)
           store.commit("SET_Roles", res.data.data.User.roles)
           localStorage.setItem("roles", res.data.data.User.roles)
           localStorage.setItem("token", res.data.data.token)
@@ -105,8 +106,8 @@ const onSubmit = () => {
 
 <style>
 .a-bg {
-  background-image: url('../images/4d2.jpeg');
-  background-size: 100%;
+  background-image: url('../images/防疫图片.jpg');
+  background-size: 1300px 1000px;
   background-repeat: no-repeat;
   background-position: center;
 }

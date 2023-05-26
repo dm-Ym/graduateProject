@@ -7,6 +7,10 @@
         insert into t_comments (uid,pid,com_name,content,create_time)
         values (#{uid},#{pid},#{comName},#{content},now());
     </insert>
+    <insert id="insertNewReply">
+        insert into t_reply (pid,uid,re_name,re_content,re_time,to_uid)
+        values (#{pid},#{uid},#{reName},#{reContent},now(),#{toUid})
+    </insert>
     <update id="updateInfo" parameterType="cn.cuit.entity.Comments">
         update comments.t_comments
         <trim prefix="set" suffixOverrides=",">

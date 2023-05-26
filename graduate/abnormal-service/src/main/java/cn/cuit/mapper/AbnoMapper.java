@@ -22,7 +22,7 @@ public interface AbnoMapper extends BaseMapper<Abno> {
 	@Select("select * from t_abno where TO_DAYS(add_time) = TO_DAYS(NOW());")
 	List<Abno> selectAbnoToday();
 
-	@Select("select * from t_abno where not(temperature between 36.2 and 37.2) and status=1 ")
+	@Select("select * from t_abno where not(temperature between 36 and 37.2) and status=1 ")
 	List<Abno> selectErrTem();
 
 	@Select("select * from t_abno where risk='是' and status=1 ")

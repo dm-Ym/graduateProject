@@ -21,6 +21,9 @@ public class Msg {
 	private String symptom;
 	private String location;
 	private String risk;
-	@TableField(value = "create_time",fill = FieldFill.INSERT)
-	private String createTime;
+	private String remark;
+	private String destination;
+	private String content;
+	private String start;
+	private String end;
 }

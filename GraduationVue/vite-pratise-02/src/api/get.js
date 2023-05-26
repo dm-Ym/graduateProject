@@ -94,12 +94,20 @@ export function getAllHeal() {
 export function getBooking(id) {
   return service.get('/api/booking/' + id)
 }
-export function getListBooking() {
-  return service.get('/api/booking')
-}
 export function getListBookingById(uid) {
   return service.get('/api/booking/user/' + uid)
 }
+export function getListJz() {
+  return service.get('/api/record/jiezhong')
+}
+
+export function getListPer() {
+  return service.get('/api/booking/per')
+}
+export function getListBooking() {
+  return service.get('/api/booking')
+}
+
 // 记录
 export function getRecord(id) {
   return service.get('/api/record/' + id)
@@ -111,6 +119,9 @@ export function getListRecord() {
 /**
  *  行程上报
  */
+export function getListMsg() {
+  return service.get('/api/msgadmin')
+}
 export function getListTrip() {
   return service.get('/api/trip')
 }

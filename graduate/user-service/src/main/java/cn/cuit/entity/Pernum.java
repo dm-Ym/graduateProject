@@ -8,12 +8,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("t_booking")
-public class Booking {
+@TableName("t_pernum")
+public class Pernum {
 	private int	id;
-	private String	hospital;
-	private String	vaccine;
-	private String	boTime;
-	private String	perNum;
-	private Boolean isShow;
+	private int	pid;
+	private int	uid;
+	private int num;
 }

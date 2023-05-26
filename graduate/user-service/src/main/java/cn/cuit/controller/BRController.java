@@ -1,6 +1,7 @@
 package cn.cuit.controller;
 
 import cn.cuit.entity.Booking;
+import cn.cuit.entity.Pernum;
 import cn.cuit.entity.Recording;
 import cn.cuit.mapper.BookingMapper;
 import cn.cuit.mapper.RecordingMapper;
@@ -29,6 +30,21 @@ public class BRController {
 	@DeleteMapping("/booking/{id}")
 	public Result deleteBooking(@PathVariable int id){
 		return Result.success(bookingMapper.deleteById(id));
+	}
+
+	@PutMapping("/booking")
+	public Result updateBooking(@RequestBody Pernum pernum){
+		// 寻找是否存在，证明是否预约过
+		Pernum i = bookingMapper.selectSGA(pernum);
+		if (i != null){
+			return Result.failed("请勿重复预约!");
+		}
+		return Result.success(bookingMapper.updateNum(pernum));
+	}
+
+	@GetMapping("/booking/per")
+	public Result<List> getPer(){
+		return Result.success(bookingMapper.selectListPer());
 	}
 
 	@GetMapping("/booking/{id}")
@@ -62,12 +78,17 @@ public class BRController {
 		return Result.success(recordingMapper.updateRe(recording));
 	}
 
+	@GetMapping("/record/jiezhong")
+	public Result getReJz(){
+		return Result.success(recordingMapper.selectJz());
+	}
+
 	@GetMapping("/record/{id}")
 	public Result getRe(@PathVariable int id){
 		return Result.success(recordingMapper.selectByUid(id));
 	}
 	@GetMapping("/record")
 	public Result<List> getRe(){
-		return Result.success(recordingMapper.selectList(null));
+		return Result.success(recordingMapper.selectListGroup());
 	}
 }

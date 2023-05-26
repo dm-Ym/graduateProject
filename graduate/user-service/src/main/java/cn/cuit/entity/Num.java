@@ -5,15 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 用来统计接种率
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("t_booking")
-public class Booking {
-	private int	id;
-	private String	hospital;
-	private String	vaccine;
-	private String	boTime;
-	private String	perNum;
-	private Boolean isShow;
+@TableName("t_recording")
+public class Num {
+	private int numfinish;
+	private String finish;
 }

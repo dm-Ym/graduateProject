@@ -5,9 +5,9 @@
 <mapper namespace="cn.cuit.mapper.MsgMapper">
     <insert id="insertNewMsg">
         insert into t_message
-        (uid,msg_name,temperature,health,suspected,symptom,location,risk,create_time)
+        (uid,msg_name,temperature,health,suspected,symptom,location,risk,remark,destination,content,start,end)
         values
-        (#{uid},#{msgName},#{temperature},#{health},#{suspected},#{symptom},#{location},#{risk},now())
+        (#{uid},#{msgName},#{temperature},#{health},#{suspected},#{symptom},#{location},#{risk},#{remark},#{destination},#{content},#{start},#{end})
     </insert>
     <update id="updateMsg" parameterType="cn.cuit.entity.Msg">
         update message.t_message

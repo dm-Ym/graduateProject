@@ -6,10 +6,18 @@ const store = createStore({
   state() {
     return {
       user: {},
-      roles: ''
+      roles: '',
+      total: '',
+      perdat: ''
     }
   },
   mutations: {
+    Per_Data(state, perdat) {
+      state.perdat = perdat
+    },
+    User_Num(state, total) {
+      state.total = total
+    },
     SET_UserInfo(state, user) {
       state.user = user
     },

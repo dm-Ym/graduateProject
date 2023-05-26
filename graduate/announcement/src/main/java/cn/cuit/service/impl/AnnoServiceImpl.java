@@ -37,6 +37,6 @@ public class AnnoServiceImpl implements AnnoService {
 	 */
 	@Override
 	public Result<List<Anno>> queryAnno() {
-		return Result.success(annoMapper.selectList(null));
+		return Result.success(annoMapper.selectListDesc());
 	}
 }

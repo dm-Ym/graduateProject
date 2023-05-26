@@ -18,8 +18,9 @@
         <button class="mx-3 text-gray-400" @click="onComments(comp.id, $event)">
           {{ comp.showText ? '收起' : '评论' }}
         </button>
-        <button @click="toggleComment(comp.id)" class="text-gray-400">
-          {{ comp.showReplies ? '折叠' : '查看回复' }} </button>
+        <button @click="toggleComment(comp.id)" class="text-gray-400" v-if="comp.replies.length != 0">
+          {{ comp.showReplies ? '折叠' : '查看回复' }}
+        </button>
 
         <div v-if="comp.showText">
           <el-input v-model="reply" :autosize="{ minRows: 4, maxRows: 8 }" type="textarea" placeholder="" :size="formSize"

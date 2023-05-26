@@ -1,6 +1,7 @@
 package cn.cuit.controller;
 
 import cn.cuit.entity.Comments;
+import cn.cuit.entity.Reply;
 import cn.cuit.mapper.CommentsMapper;
 import cn.cuit.resultAPI.Result;
 import cn.cuit.service.CommentsService;
@@ -26,6 +27,11 @@ public class AdminComController {
 		return commentsService.addNewCommet(comments);
 	}
 
+	@PostMapping("/reply")
+	public Result createNewReply(@RequestBody Reply reply){
+		return Result.success(commentsMapper.insertNewReply(reply));
+	}
+
 	@DeleteMapping("/{id}")
 	public Result<Comments> deleteCom(@PathVariable int id){
 		return commentsService.deleteComment(id);
@@ -37,7 +43,7 @@ public class AdminComController {
 	}
 
 	@GetMapping("/{id}")
-	public Result<Comments> findById(@PathVariable int id){
+	public Result<List<Comments>> findById(@PathVariable int id){
 		return commentsService.queryById(id);
 	}
 

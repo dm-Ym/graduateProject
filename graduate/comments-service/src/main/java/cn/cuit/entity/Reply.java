@@ -4,19 +4,19 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("t_comments")
-public class Comments {
+@TableName("t_reply")
+public class Reply {
 	private int id;
-	private int uid;
 	private int pid;
-	private String comName;
-	private String content;
-	private String createTime;
-	private int status;
-	private List<Reply> replies;
+	private int uid;
+	private String reName;
+	private String reContent;
+	private String reTime;
+	private int toUid;
 }

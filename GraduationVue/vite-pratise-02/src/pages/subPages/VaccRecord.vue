@@ -2,8 +2,9 @@
   <el-table :data="tableData.slice((currentPage - 1) * pageSize, currentPage * pageSize)" border stripe class="w-[99%]">
     <el-table-column type="index" label="编号" width="80" />
     <el-table-column prop="userName" label="姓名" width="120" />
-    <el-table-column prop="syringes" label="第几针" sortable width="120" />
-    <el-table-column prop="vaccine" label="哪款疫苗" width="220" />
+    <el-table-column prop="finish" label="剂数" sortable width="120" />
+    <el-table-column prop="manufacturers" label="疫苗" width="220" />
+    <el-table-column prop="types" label="疫苗类型" width="220" />
     <el-table-column prop="createTime" label="接种时间" width="220" />
     <el-table-column label="操作" width="180">
       <template v-slot="scope">
@@ -38,7 +39,7 @@ export default {
   methods: {
     getData() {
       getListRecord().then((res) => {
-        console.log(res.data);
+        console.log(res.data.data);
         this.total = res.data.data.length
         this.tableData = res.data.data
       })

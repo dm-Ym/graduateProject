@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresRoles(value = {"admin","super"},logical = Logical.OR)
+//@RequiresRoles(value = {"admin","super"},logical = Logical.OR)
 public class AbnoController {
 	@Autowired
 	private AbnoMapper abnoMapper;

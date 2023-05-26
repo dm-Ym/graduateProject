@@ -44,6 +44,6 @@ public class MsgServiceImpl implements MsgService {
 	 */
 	@Override
 	public Result<List<Msg>> queryAllMsg() {
-		return Result.success(msgMapper.selectList(null));
+		return Result.success(msgMapper.selectListOrder());
 	}
 }

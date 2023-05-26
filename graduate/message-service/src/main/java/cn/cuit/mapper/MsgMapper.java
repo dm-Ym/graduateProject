@@ -18,6 +18,9 @@ public interface MsgMapper extends BaseMapper<Msg> {
 	@Select("select * from t_message where uid=#{uid}")
 	List<Msg> selectByIdMsg(@Param("uid")int uid);
 
+	@Select("select * from t_message order by start desc, uid asc")
+	List<Msg> selectListOrder();
+
 //	@Select("select * from t_message where ")
 //	List<Msg> selectAllUser();
 }

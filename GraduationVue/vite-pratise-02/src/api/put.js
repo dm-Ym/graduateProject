@@ -39,6 +39,9 @@ export function updateStatus(id) {
 export function updateRecord(data) {
   return service.put("/api/record", data)
 }
-// export function updateStatus(id) {
-//   return service.put("/api/advice/status", { id: id })
-// }
+/**
+ * 预约
+ */
+export function updateBooking(data) {
+  return service.put("/api/booking", data)
+}

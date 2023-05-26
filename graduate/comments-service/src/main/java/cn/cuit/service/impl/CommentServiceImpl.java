@@ -1,8 +1,9 @@
 package cn.cuit.service.impl;
 
 import cn.cuit.entity.Comments;
-import cn.cuit.entity.User;
+import cn.cuit.entity.Reply;
 import cn.cuit.mapper.CommentsMapper;
+import cn.cuit.mapper.ReplyMapper;
 import cn.cuit.resultAPI.Result;
 import cn.cuit.service.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ import java.util.List;
 public class CommentServiceImpl implements CommentsService {
 	@Autowired
 	private CommentsMapper commentsMapper;
+
+	@Autowired
+	private ReplyMapper replyMapper;
 
 	public void setCommentsMapper(CommentsMapper commentsMapper) {
 		this.commentsMapper = commentsMapper;
@@ -35,8 +39,17 @@ public class CommentServiceImpl implements CommentsService {
 	}
 
 	@Override
-	public Result<Comments> queryById(int id) {
-		return Result.success(commentsMapper.selectById(id));
+	public Result<List<Comments>> queryById(int id) {
+		List<Comments> complaints = commentsMapper.selectByUid(id);
+		for (Comments c :
+				complaints) {
+			List<Reply> replies = replyMapper.selectByPid(c.getId());
+			if (replies != null){
+				c.setReplies(replies);
+			}
+		}
+		return Result.success(complaints);
+//		return Result.success(commentsMapper.selectByUid(id));
 	}
 
 	@Override

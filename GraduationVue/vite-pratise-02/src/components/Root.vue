@@ -13,7 +13,9 @@
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item class="text-sm">个人中心</el-dropdown-item>
+            <el-dropdown-item class="text-sm">
+              <button @click="toPer">个人中心</button>
+            </el-dropdown-item>
             <el-dropdown-item class="text-sm">
               <button @click="logout">退出登录</button>
             </el-dropdown-item>
@@ -67,7 +69,7 @@
             </template>
           </el-menu>
         </el-aside>
-        <el-main>
+        <el-main class="mainY">
           <router-view></router-view>
         </el-main>
       </el-container>
@@ -92,7 +94,6 @@ export default {
     }
   },
   created() {
-    // const that = this
     this.menuList = router.options.routes[1].children
     if (localStorage.getItem('token')) {
       this.token = true
@@ -114,32 +115,24 @@ export default {
           element.meta.visiable = false
         }
       })
-      // if (element.children.meta.roles) {
-      //   element.cildren.meta.roles.forEach(item => {
-      //     // console.log(item.indexOf(this.roles));
-      //     // console.log(this.roles);
-      //     if (item.indexOf(this.roles) >= 0) {
-      //       element.meta.visiable = true
-      //     } else {
-      //       element.meta.visiable = false
-      //     }
-      // })
-      // }
     })
   },
   methods: {
     toggleCollapse() {
       this.isCollapse = !this.isCollapse
     },
+    // personal
+    toPer() {
+      router.push('/per')
+    },
+    // 登出
     logout() {
       // 清除token并返回首页
       localStorage.removeItem('token')
-
       this.$store.dispatch('clearUser')
-      this.$store.commit('SET_UserInfo', { fullName: 'guest', roles: 'guest' })
+      this.$store.commit('SET_UserInfo', { fullName: '', roles: 'guest' })
       localStorage.removeItem('user')
       console.log(this.$store.state.user);
-
       this.menuList = router.options.routes[1].children
       this.roles = 'guest'
       this.menuList.forEach(element => {
@@ -165,6 +158,14 @@ export default {
 <style lang="less">
 .decorativeBar {
   @apply bg-[#297AD8] w-[100%] h-45px text-center mx-auto;
+}
+
+.asideY {
+  height: 710px;
+}
+
+.mainY {
+  height: 850px;
 }
 
 li {

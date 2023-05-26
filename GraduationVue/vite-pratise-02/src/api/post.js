@@ -3,12 +3,8 @@ import service from '@/axios/axios.js';
 /**
  *  Anno 只有管理员才能新增公告 
  */
-export function createAnno() {
-  return service.post('/api/anno', {
-    title: '123',
-    content: '1234',
-    createName: '1234'
-  })
+export function createAnno(data) {
+  return service.post('/api/anno', data)
 }
 
 /**
@@ -17,6 +13,9 @@ export function createAnno() {
  */
 export function createComm(user, data) {
   return service.post('/api/com' + user, data)
+}
+export function createCommm(data) {
+  return service.post('/api/comadmin/reply', data)
 }
 
 /**

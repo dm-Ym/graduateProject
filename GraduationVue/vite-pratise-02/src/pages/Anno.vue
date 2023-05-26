@@ -25,7 +25,7 @@
         <div class="w-850px bg-gray-100 pl-40px border-2">{{ currentTime }}</div>
       </el-form-item>
       <el-form-item label="标题">
-        <el-input v-model="form.name" class="w-850px text-22px" />
+        <el-input v-model="form.title" class="w-850px text-22px" />
       </el-form-item>
       <el-form-item label="公告内容">
         <el-input v-model="form.content" type="textarea" :autosize="{ minRows: 10, maxRows: 12 }"
@@ -36,7 +36,7 @@
     <template #footer>
       <span class="dialog-footer">
         <el-button type="primary" @click="dialogVisible = false" v-if="isShow">确认</el-button>
-        <el-button type="primary" @click="onCreateAnno" v-else>添加</el-button>
+        <el-button type="primary" @click="onCreateAnno(form)" v-else>添加</el-button>
         <el-button @click="dialogVisible = false">取消</el-button>
       </span>
     </template>
@@ -65,7 +65,8 @@ const handleClose = (done: () => void) => {
 const formSize = ref('large')
 const background = ref(true)
 const form = reactive({
-  name: '',
+  createName: store.state.user.fullName,
+  title: '',
   content: '',
 })
 </script>
@@ -83,7 +84,7 @@ export default {
       currentIndex: null,
       content: '',
       currentTime: '',
-      isShow: true,
+      isShow: true,  // 显示确认/提交按钮
       AnnoTitle: '',
       currentPage: 1,
       pageSize: 12,
@@ -126,8 +127,11 @@ export default {
       // deleteAnno()
       console.log(row.id);
     },
-    onCreateAnno() {
-      createAnno()
+    onCreateAnno(form) {
+      createAnno(form).then(res => {
+        this.dialogVisible = false
+        this.getData()
+      })
     },
     handleRowClick(row) {
       this.currentIndex = this.tableData.indexOf(row)
