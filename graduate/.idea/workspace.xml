@@ -73,7 +73,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.messageApplication">
+  <component name="RunManager" selected="Application.commentsApplication">
     <configuration name="announcementApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cn.cuit.announcementApplication" />
       <module name="announcement" />
@@ -100,9 +100,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="complaintsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.cuit.complaintsApplication" />
-      <module name="complains-service" />
+    <configuration name="gatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.cuit.gatewayApplication" />
+      <module name="gateway" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.cuit.*" />
@@ -141,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.userApplication" />
-        <item itemvalue="Application.messageApplication" />
-        <item itemvalue="Application.complaintsApplication" />
         <item itemvalue="Application.commentsApplication" />
         <item itemvalue="Application.announcementApplication" />
+        <item itemvalue="Application.userApplication" />
+        <item itemvalue="Application.messageApplication" />
+        <item itemvalue="Application.gatewayApplication" />
       </list>
     </recent_temporary>
   </component>

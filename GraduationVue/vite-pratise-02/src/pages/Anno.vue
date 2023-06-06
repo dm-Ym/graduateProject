@@ -7,7 +7,7 @@
     <el-table-column type="index" sortable label="序号" width="100" />
     <el-table-column prop="createTime" sortable label="创建时间" width="180" />
     <el-table-column prop="createName" label="创建人" width="150" />
-    <el-table-column text prop="title" label="标题" width="850" />
+    <el-table-column text prop="title" label="标题" width="350" />
     <el-table-column label="操作" width="250">
       <template v-slot="scope">
         <el-button @click="dialogVisible = true" class="bg-green-300">查看详情</el-button>

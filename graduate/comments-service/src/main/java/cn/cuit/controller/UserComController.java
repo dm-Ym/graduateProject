@@ -30,8 +30,9 @@ public class UserComController {
 	}
 
 	@PutMapping
-	public Result<Comments> updateCom(@RequestBody Comments comments){
-		return commentsService.updateComment(comments);
+	public Result updateCom(@RequestBody Comments comments){
+//		return commentsService.updateComment(comments);
+		return Result.failed("该用户不存在");
 	}
 
 	@GetMapping("/{id}")

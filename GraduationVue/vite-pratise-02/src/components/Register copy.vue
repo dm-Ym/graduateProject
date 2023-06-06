@@ -1,10 +1,8 @@
 <template>
-  <el-row class="min-h-screen">
-    <el-col :lg="16" :sm="12" class="bg-green-400 flex items-center justify-center a-bg">
-    </el-col>
+  <div class="bg-green-200 w-710px ml-[30%] mt-[7%]">
     <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px" class="demo-ruleForm" :size="formSize"
       status-icon>
-      <el-form-item label="姓名" prop="full_name" class="mt-30">
+      <el-form-item label="姓名" prop="full_name">
         <el-input v-model="ruleForm.full_name" class="w-500px" />
       </el-form-item>
       <el-form-item label="性别" prop="gender">
@@ -16,6 +14,9 @@
       <el-form-item label="年龄" prop="age">
         <el-input v-model="ruleForm.age" class="w-500px" placeholder="请输入0-120的整数" />
       </el-form-item>
+      <!-- <el-form-item label="身份证号" prop="age">
+      <el-input v-model="ruleForm.age" class="w-500px" placeholder="请输入0-120的整数" />
+      </el-form-item> -->
       <el-form-item label="电话号码" prop="phone">
         <el-input v-model="ruleForm.phone" class="w-500px" placeholder="请输入11位电话号码" />
       </el-form-item>
@@ -55,7 +56,7 @@
         <el-button @click="$router.push('/')">取消并返回主页</el-button>
       </el-form-item>
     </el-form>
-  </el-row>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -127,12 +128,3 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
   label: `${idx + 1}`,
 }))
 </script>
-
-<style>
-.a-bg {
-  background-image: url('../images/注册.jpg');
-  background-size: 1300px 1000px;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-</style>

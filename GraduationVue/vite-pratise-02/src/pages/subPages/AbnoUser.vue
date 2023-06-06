@@ -8,8 +8,8 @@
     <el-table-column type="index" label="序号" sortable width="100" />
     <el-table-column prop="abnoName" label="用户名" sortable width="180" />
     <el-table-column prop="temperature" label="体温" sortable width="120" />
-    <el-table-column prop="otherSymptom" label="是否有新冠不适症状" sortable width="220" />
-    <el-table-column prop="risk" label="是否高风险地区返回" sortable width="220" />
+    <el-table-column prop="otherSymptom" label="是否有新冠不适症状" sortable width="120" />
+    <el-table-column prop="risk" label="是否高风险地区返回" sortable width="120" />
     <el-table-column prop="location" label="地址详情(不是则不填)" sortable width="230" />
     <el-table-column prop="addTime" label="更新日期" sortable width="200" />
     <el-table-column label="操作" width="180" v-slot="scope">

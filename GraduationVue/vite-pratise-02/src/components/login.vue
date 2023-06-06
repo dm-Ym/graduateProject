@@ -3,10 +3,6 @@
     <el-col :lg="16" :sm="12" class="bg-green-400 flex items-center justify-center a-bg">
     </el-col>
     <el-col :lg="8" :sm="12" class="bg-light-300 flex items-center justify-center flex-col">
-      <!-- <div>
-        <div class="text-5xl text-black text-stroke-1 mb-4">欢迎回来</div>
-        <div>treo foo bar bae yeank chove clues throo</div>
-      </div> -->
       <h1 class="font-bold text-gray-600 text-4xl mb-4">登录页面</h1>
       <div class="mb-2 flex items-center justify-center space-x-2">
         <span class="h-[1px] bg-green-500 w-16"></span>
@@ -15,7 +11,6 @@
       </div>
 
       <el-form ref="formRef" :model="form" class="w-250px" :rules="rules">
-
         <el-form-item prop="phone">
           <el-input v-model="form.phone" placeholder="请输入用户名" />
         </el-form-item>
@@ -34,7 +29,6 @@
         <el-form-item>
           <el-button @click="$router.push('/register')" class="w-250px rounded-4xl">注册</el-button>
         </el-form-item>
-
       </el-form>
     </el-col>
 
